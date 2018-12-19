@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tls-ingress
+spec:
+  rules:
+  - host: mydomain.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: wordpress
+          servicePort: 80
+  tls:
+    - hosts:
+      - mydomain.com
+      secretName: tls-secret  
